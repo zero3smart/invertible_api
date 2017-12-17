@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.10.1"
 
-server '52.25.166.156', port: 22, roles: [:web, :app, :db], primary: true
+server '52.35.90.133', port: 22, roles: [:web, :app, :db], primary: true
 set :application, "invertible_api"
 set :user, "ubuntu"
 set :repo_url, "git@github.com:invertibleIO/invertible_api.git"
