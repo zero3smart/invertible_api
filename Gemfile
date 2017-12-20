@@ -12,6 +12,9 @@ gem 'puma', '~> 3.7'
 gem 'activerecord5-redshift-adapter'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'rack-cors', :require => 'rack/cors'
+
+
 group :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda-matchers', '~> 3.1'
