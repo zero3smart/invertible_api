@@ -1,10 +1,6 @@
 class GAnalyticsController < ApplicationController
-    # GET /g_analytics
-    def index
 
-    end
-
-    # GET /g_analytics/:start_date/:end_date
+    # GET /g_analytics/explorer/:start_date/:end_date
     def get_by_date_range
         start_date = params[:start_date]
         end_date = params[:end_date]
@@ -14,7 +10,7 @@ class GAnalyticsController < ApplicationController
         render json: @analytics.to_json
     end
 
-    # GET /g_analytics/:start_date
+    # GET /g_analytics/explorer/:start_date
     def get_by_now
         start_date = params[:start_date]
         # @analytics = GAnalytic.get_by_now(start_date)
