@@ -9,7 +9,8 @@ class GAnalyticsController < ApplicationController
         start_date = params[:start_date]
         end_date = params[:end_date]
         # @analytics = GAnalytic.get_by_date_range(start_date, end_date)
-        @analytics = ActiveRecord::Base.connection.execute("Select * from explorer WHERE date >= ? and date <= ?", start_date, end_date)
+        # @analytics = ActiveRecord::Base.connection.execute("Select * from explorer WHERE date >= ? and date <= ?", start_date, end_date)
+        @analytics = GAnalytic.execute_sql("Select * from explorer WHERE date >= ? and date <= ?", start_date, end_date);
         render json: @analytics.to_json
     end
 
@@ -17,7 +18,8 @@ class GAnalyticsController < ApplicationController
     def get_by_now
         start_date = params[:start_date]
         # @analytics = GAnalytic.get_by_now(start_date)
-        @analytics = ActiveRecord::Base.connection.execute("Select * from explorer WHERE date >= ? and date <= ?", start_date, Time.now.strftime('%Y%m%d'))
+        # @analytics = ActiveRecord::Base.connection.execute("Select * from explorer WHERE date >= ? and date <= ?", start_date, Time.now.strftime('%Y%m%d'))
+        @analytics = GAnalytic.execute_sql("Select * from explorer WHERE date >= ? and date <= ?", start_date, Time.now.strftime('%Y%m%d'));
         render json: @analytics.to_json
     end
 
@@ -26,7 +28,8 @@ class GAnalyticsController < ApplicationController
         start_date = params[:start_date]
         end_date = params[:end_date]
         # @analytics = GAnalytic.get_by_date_range(start_date, end_date).select("sum(sessions)")
-        @analytics = ActiveRecord::Base.connection.execute("Select sum(sessions) from explorer WHERE date >= ? and date <= ?", start_date, end_date)
+        # @analytics = ActiveRecord::Base.connection.execute("Select sum(sessions) from explorer WHERE date >= ? and date <= ?", start_date, end_date)
+        @analytics = GAnalytic.execute_sql("Select sum(sessions) from explorer WHERE date >= ? and date <= ?", start_date, end_date);
         render json: @analytics.to_json
     end
 end
