@@ -9,14 +9,14 @@ class GAnalyticsController < ApplicationController
         start_date = params[:start_date]
         end_date = params[:end_date]
         @analytics = GAnalytic.get_by_date_range(start_date, end_date)
-        render json: @analytics
+        render json: @analytics.to_json
     end
 
     # GET /g_analytics/:start_date
     def get_by_now
         start_date = params[:start_date]
         @analytics = GAnalytic.get_by_now(start_date)
-        render json: @analytics
+        render json: @analytics.to_json
     end
 
     # GET /g_analytics_1/:start_date/:end_date
@@ -24,6 +24,6 @@ class GAnalyticsController < ApplicationController
         start_date = params[:start_date]
         end_date = params[:end_date]
         @analytics = GAnalytic.get_by_date_range(start_date, end_date).select("sum(sessions)")
-        render json: @analytics
+        render json: @analytics.to_json
     end
 end
