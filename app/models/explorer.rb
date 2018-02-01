@@ -1,4 +1,4 @@
-class GAnalytic < ApplicationRecord
+class Explorer < ApplicationRecord
     self.table_name = "explorer"
 
     scope :get_by_date_range, ->(start_date, end_date) { where("date >= ? and date <= ?", start_date, end_date) }
